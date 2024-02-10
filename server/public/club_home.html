@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title v-model="post_title">Individual event general club manager logged in</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.018/vue.min.js"></script>-->
+        <link rel="stylesheet" href="./stylesheets/event_home.css">
+        <link rel="stylesheet" href="./stylesheets/style.css">
+        <link rel="stylesheet" href="./stylesheets/dashboard.css">
+
+
+    </head>
+    <body>
+
+        <!-- header -->
+        <div id="header" class="header">
+            <div class="home_button"><a href="/">HotSpots</a></div>
+            <div v-if="user==false" onclick="location.href='login.html'" class="login_button"><a>Login</a></div>
+            <div v-else v-on:click="logout_function" class="login_button"><a>Logout</a></div>
+
+            <div class="search_field">
+                <div>
+                <input v-model="input" type="text" placeholder="search for your clubs...">
+                <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+            </div>
+            </div>
+        </div>
+
+        <div id = "sidebar" class="sidebar">
+            <div class="sidebar_comp">
+              <h1>My Clubs</h1>
+              <div v-if="user" class="sidebar_button"><button onclick = "location.href = 'search_club.html'" type="button">Join</button></div>
+              <div v-if="user" class="list_div">
+                <ul>
+                  <li v-for="(item, index) in joined_clubs"><a v-bind:href="'club_home.html?club_id='+item.club_id">{{ item.club_name }}</a></li>
+                </ul>
+              </div>
+              <div style="text-align: center;" v-else>Sign in to see</div>
+            </div>
+            <div class="sidebar_comp">
+              <h1>Clubs Managed</h1>
+              <div v-if="user" class="sidebar_button"><button onclick="location.href = 'create_club.html'" type="button">Create</button></div>
+              <div v-if="user" class="list_div">
+                <ul>
+                  <li v-for="(item, index) in managed_clubs"><a v-bind:href="'club_home.html?club_id='+item.club_id">{{ item.club_name }}</a></li>
+                </ul>
+              </div>
+              <div style="text-align: center;" v-else>Sign in to see</div>
+            </div>
+        </div>
+
+
+        <!-- main -->
+        <div id="main" class="main">
+            <div class="club_header">
+                <div class="date">
+                    Club founded on: <p>{{ current_club[0].founded_date }}</p>
+                </div>
+                <div class="club_pic">
+                    <img class="actual_club_pic" :src="'./images/club_banners/'+current_club[0].club_banner" alt="picture of club">
+                </div>
+                <div class="name">
+                    <h1>{{ current_club[0].club_name }}</h1>
+                </div>
+                <button v-if="username!=current_club[0].username && is_member==false" v-on:click="join_club" class="leave_join_button" type="button">Join</button>
+                <button v-else-if="username!=current_club[0].username && is_member==true" v-on:click="leave_club" class="leave_join_button" type="button">Leave</button>
+            </div>
+
+            <div class="tabs">
+                <div class="tablink">
+                    <button type="button" class="tab_head" id="gen_info_tab" v-on:click="current_tab=1">General Information</button>
+                    <button type="button" class="tab_head" v-on:click="current_tab=2">Club Post</button>
+                    <button v-if="username==current_club[0].username" type="button" class="tab_head" v-on:click="current_tab=3">Members</button>
+                    <button type="button" class="tab_head" v-on:click="current_tab=4">Current Events</button>
+                    <button v-if="username==current_club[0].username" type="button" class="tab_head" v-on:click="current_tab=5">RSVP</button>
+                    <button v-if="is_member" type="button" class="tab_head" v-on:click="current_tab=6, check_email()">Email</button>
+                </div>
+
+                <div v-if="current_tab==1" class="tab_content" id="general_info">
+                    <h2>Club Description</h2>
+                    <p>{{ current_club[0].club_desc }}</p>
+                </div>
+
+                <div v-if="current_tab==2" class="tab_content" id="club_post">
+                    <h2>Club posts</h2>
+                    <p>Here you will find the club posts</p>
+
+                    <div v-if="username==current_club[0].username" class="make_club_post_form_div">
+                        <p>Post to </p>
+                        <select v-model="new_post[0].visibility">
+                            <option selected>public</option>
+                            <option>private</option>
+
+                        </select>
+                        <input id="title_of_post" type="text" placeholder="Title" v-model="new_post[0].title">
+                        <textarea id="body_of_post" v-model="new_post[0].description">Make a post :O</textarea>
+                        <br>
+                        <button type="submit" v-on:click="email_post(), submit_posts()">Submit</button>
+                    </div>
+
+                    <br>
+
+
+                    <div class="big_comment_box">
+                        <ul>
+                            <li v-for="(item, index) in post_list">
+                                <div v-if="item.visibility=='public' || is_member==true || username==current_club[0].username" class="post_owner"><b>{{ item.username }}</b> - {{ item.post_title }} - {{ item.post_date }}</div>
+                                <div v-if="item.visibility=='public' || is_member==true || username==current_club[0].username" class="post_body">{{ item.post_body }}</div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+                <div v-if="username==current_club[0].username && current_tab==3" class="tab_content" id="members">
+                    <h2>Members</h2>
+                    <p>Here you will find the club members</p>
+                    <table>
+                        <tr>
+                          <th>Name</th>
+                          <th>Date Joined</th>
+
+                        </tr>
+                        <tr v-for="(item, index) in members">
+                          <td>{{ item.username }}</td>
+                          <td>{{ item.join_date }}</td>
+                        </tr>
+                      </table>
+                </div>
+
+                <div v-if="current_tab==4" class="tab_content" id="current_event">
+                    <h2>Current events</h2>
+                    <button v-if="username==current_club[0].username && create_event==true" type="button" v-on:click="create_event=false">Create</button>
+                    <button v-else-if="username==current_club[0].username && create_event==false" type="button" v-on:click="create_event=true">Close</button>
+                    <div v-if="username==current_club[0].username && create_event==false" class="create_event_form">
+                        <label>Event name</label>
+                        <br>
+                        <input type="text" id="new_event_name" v-model="new_event.name" class="event_form_input" required>
+                        <br>
+                        <label>Event description</label>
+                        <br>
+                        <textarea type="text" id="new_event_description" v-model="new_event.description" class="event_form_input" required></textarea>
+                        <br>
+                        <label>Event start</label>
+                        <br>
+                        <input type="datetime-local" id="new_event_start_date" v-model="new_event.start_date" class="event_form_input" required>
+                        <br>
+                        <label>Event end</label>
+                        <br>
+                        <input type="datetime-local" id="new_event_end_date" v-model="new_event.end_date" class="event_form_input" required>
+                        <br>
+                        <label>Event location</label>
+                        <br>
+                        <input type="text" id="new_event_location" v-model="new_event.location" class="event_form_input" required>
+                        <br>
+                        <br>
+                        <button v-on:click="email_event(), submit_event()" type="submit">Submit</button>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li v-for="(curr_event, index) in event_list">
+                            <div class="modal_popup_event_button" v-on:click="show_event=true, event_index=index, check_rsvp()">
+                                {{curr_event.event_name}}
+                            </div>
+
+                        </li>
+                    </ul>
+
+                    <div class="modal_popup_event_text_box" id="modal_text_events_box_id">
+                        <div v-if="show_event" class="modal_internal_text_box">
+                            <div class="modal_x_button" v-on:click="show_event=false">X</div>
+                            <b>Title:</b> <p>{{ event_list[event_index].event_name }}</p>
+                            <b>Description:</b> <p>{{ event_list[event_index].event_desc }}</p><br>
+                            <!-- <b>Start time:</b> <p>{{event_list[event_index].time_start}}</p><br>
+                            <b>End time:</b> <p>{{event_list[event_index].time_end}}</p><br> -->
+                            <b>Start time:</b> <p>{{event_list[event_index].time_start.slice(0, 19).replace('T', ' ')}}</p><br>
+                            <b>End time</b> <p>{{event_list[event_index].time_end.slice(0, 19).replace('T', ' ')}}</p><br>
+                            <b>Location:</b> <p>{{event_list[event_index].location}}</p><br>
+                            <button v-if="!is_rsvp" type="submit" class="make_rsvp_button" v-on:click="make_rsvp(), is_rsvp=true">Make RSVP</button>
+                            <button v-else-if="is_rsvp" type="submit" class="make_rsvp_button" v-on:click="remove_rsvp(), is_rsvp=false">Remove RSVP</button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div v-if="username==current_club[0].username && current_tab==5" class="tab_content" id="rsvp">
+                    <h2>RSVPs</h2>
+                    <ul>
+                        <li v-for="(curr_event, index) in event_list">
+                            <div class="modal_popup_event_button" v-on:click="show_rsvp=true, rsvp_index=index, fill_rsvp(curr_event.event_id)">
+                                {{curr_event.event_name}}
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="modal_popup_event_text_box" id="modal_text_rsvp_box_id">
+                        <div v-if="show_rsvp" class="modal_internal_text_box">
+                            <div class="modal_x_button" v-on:click="show_rsvp=false">X</div>
+
+                            <ul>
+                                <li v-for="(curr_rsvp, index) in curr_rsvp_list">
+                                    <div class="modal_popup_event_button">
+                                        <p>{{ curr_rsvp }}</p><br>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="current_tab==6" class="tab_content" id="email">
+                    <h2>Email settings</h2>
+
+                    <p>Would you like to have email notifications?</p>
+                    <input type="radio" name="email_notif" value=1 :checked="email_notif==1" v-model="email_notif">
+                    <label for="html">Yes</label>
+                    <input type="radio" name="email_notif" value=0 :checked="email_notif==0" v-model="email_notif">
+                    <label for="html">No</label>
+                    <button type="submit" v-on:click="change_notif">Save</button>
+                </div>
+            </div>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="javascripts/individual_event.js"></script>
+        <script src="javascripts/sidebar.js"></script>
+        <script src="javascripts/header.js"></script>
+    </body>
+</html>

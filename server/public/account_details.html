@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>account_details</title>
+  <link rel="stylesheet" href="stylesheets/account_details.css">
+  <link rel="stylesheet" href="stylesheets/login.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="javascripts/header.js" defer></script>
+  <script src="javascripts/account_details.js" defer></script>
+</head>
+
+<body>
+  <!-- header -->
+  <div id="header" class="header">
+    <div class="home_button"><a href="/">HotSpots</a></div>
+    <div v-if="user==false" onclick="location.href='login.html'" class="login_button"><a>Login</a></div>
+    <div v-else v-on:click="logout_function" class="login_button"><a>Logout</a></div>
+
+    <div class="search_field">
+      <div>
+        <input v-model="input" type="text" placeholder="search for your clubs...">
+        <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="login_body">
+
+    <!-- if you want to keep this, figure out a way to place it to the left of the page
+      <script src="javascripts/sidebar.js" defer></script>
+
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar_comp">
+        <h1>My Clubs</h1>
+        <div class="sidebar_button"><button onclick="location.href = 'search_club.html'" type="button">Join</button>
+        </div>
+        <div class="list_div">
+          <ul>
+            <li v-for="(item, index) in joined_clubs"><a v-bind:href="'event.html'">{{ item.club_name }}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="sidebar_comp">
+        <h1>Clubs Managed</h1>
+        <div class="sidebar_button"><button type="button">Create</button></div>
+        <div class="list_div">
+          <ul>
+            <li v-for="(item, index) in managed_clubs"><a v-bind:href="'event.html'">{{ item.club_name }}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  -->
+
+    <div class="account_box" id="app">
+
+      <div class="details_box">
+
+        <h1 class="acc_det_left">MY ACCOUNT</h1><br><br><br>
+        <!-- Account Details form -->
+        <form @submit.prevent class="acc_det_right">
+
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" v-model="userCredentials.firstName" class="input_size_ad"><br>
+
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" v-model="userCredentials.lastName" class="input_size_ad"><br>
+
+          <label for="username">Current Username (Leave Blank For No Change)</label>
+          <input type="text" id="username" v-model="userCredentials.username" class="input_size_ad"><br>
+
+          <label for="newUsername">New Username (Leave Blank For No Change)</label>
+          <input type="text" id="newUsername" v-model="userCredentials.newUsername" class="input_size_ad"><br>
+
+          <label for="password">Current Password (Leave Blank For No Change)</label>
+          <input type="password" id="password" v-model="userCredentials.password" class="input_size_ad"><br>
+
+          <label for="newPassword">New Password (Leave Blank For No Change)</label>
+          <input type="password" id="newPassword" v-model="userCredentials.newPassword" class="input_size_ad"><br>
+
+          <button type="submit" class="signin_outline_ad" @click="accountDetails_function">Save Details</button>
+        </form>
+      </div>
+
+      <div class="details_box_right">
+        <div class="account_right_content"> {{ errorMessage }} </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

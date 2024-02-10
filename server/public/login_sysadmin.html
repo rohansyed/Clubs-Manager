@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Administration Login</title>
+    <link rel="stylesheet" href="stylesheets/login_sysadmin.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="javascripts/login_sysadmin.js" defer></script>
+</head>
+
+<body>
+    <!-- header -->
+    <div id="header" class="header">
+        <div class="home_button"><a href="/">HotSpots</a></div>
+        <div v-if="user==false" onclick="location.href='login.html'" class="login_button"><a>Login</a></div>
+
+        <div class="search_field">
+            <div>
+                <input v-model="input" type="text" placeholder="search for your clubs...">
+                <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login_body">
+
+        <div class="login_box">
+
+            <div class="login_left"> <!-- left side div (green) -->
+                <h1 class="login_left_content">
+                    Warning: Only Administrators Can Login From This Page<br><br>
+                    To Create Your Own Account, Please Click The Button Below
+                </h1>
+                <br>
+                <div class="signup_outline"><a class="signup_button" href="signup.html">Sign Up</a></div>
+            </div>
+
+            <div class="login_right" id="app"> <!-- right side div (purple) -->
+                <h1 class="login_rightside_header">Administration Login</h1><br><br><br>
+                <!-- login form -->
+                <form @submit.prevent class="login_right_content">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" v-model="loginInfo.username" class="input_size" required><br>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" v-model="loginInfo.password" class="input_size" required><br>
+                    <button type="submit" class="signin_outline" @click="loginSysAdmin_function">Sign In</button>
+                </form>
+                <br><br><br>
+                <div class="signup_outline"><a class="signup_button" href="login.html">General Login</a></div>
+                <br><br><br>
+                <div class="login_vue_messages">{{ message }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

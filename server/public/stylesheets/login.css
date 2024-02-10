@@ -1,0 +1,181 @@
+.login_left {
+    background-color: #2CB67D;
+    width: 33.333%;
+    float: left;
+    /* centres everything */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* rounded corners as specified */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.login_right {
+    background-color: #7F5AF0;
+    width: 66.66%;
+    float: left;
+    /* centres everything */
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* rounded corners as specified */
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.login_box {
+    width: 85%;
+    height: 1000px;
+    max-height: max-content;
+    box-sizing: border-box;
+    /* centers the box horizontally */
+    margin: 0 auto;
+    display: flex;
+}
+
+.login_body {
+    background-color: #16161a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* takes up full view */
+    height: 100vh;
+
+}
+
+.signup_button {
+    display: inline;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #f2f2f2;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.signup_outline {
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    padding-left: 75px;
+    padding-right: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.login_left_content {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xxx-large;
+}
+
+.login_right_content {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xx-large;
+    /* centres everything */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login_vue_messages {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bolder;
+    font-size: large;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.signin_outline {
+    border: 2px solid #2CB67D;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    padding-left: 90px;
+    padding-right: 90px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xx-large;
+    background-color: #2CB67D;
+}
+
+.input_size {
+    width: 200%;
+    height: 60px;
+    font-size: x-large;
+}
+
+/* Signup Page classes */
+
+.signup_left {
+    background-color: #2CB67D;
+    width: 66.666%;
+    float: left;
+    /* centres everything */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* rounded corners as specified */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.signup_right {
+    background-color: #7F5AF0;
+    width: 33.333%;
+    float: left;
+    /* centres everything */
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* rounded corners as specified */
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.signup_button_left {
+    border: 2px solid #7F5AF0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    padding-left: 90px;
+    padding-right: 90px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xx-large;
+    background-color: #7F5AF0;
+}
+
+.signup_left_content {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xx-large;
+}

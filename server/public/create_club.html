@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/create_club.css">
+</head>
+<body>
+
+
+  <div id="header" class="header">
+    <div class="home_button"><a href="/">HotSpots</a></div>
+    <div v-if="user==false" onclick="location.href='login.html'" class="login_button"><a>Login</a></div>
+    <div v-else v-on:click="logout_function" class="login_button"><a>Logout</a></div>
+
+    <div class="search_field">
+        <div>
+        <input v-model="input" type="text" placeholder="search for your clubs...">
+        <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+    </div>
+    </div>
+</div>
+
+<!-- <div id = "sidebar" class="sidebar">
+  <div class="sidebar_comp">
+    <h1>My Clubs</h1>
+    <div class="sidebar_button"><button onclick = "location.href = 'search_club.html'" type="button">Join</button></div>
+    <div class="list_div">
+      <ul>
+        <li v-for="(item, index) in joined_clubs"><a v-bind:href="'club_home.html?club_id='+item.club_id">{{ item.club_name }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="sidebar_comp">
+    <h1>Clubs Managed</h1>
+    <div class="sidebar_button"><button onclick="location.href = 'create_club.html'" type="button">Create</button></div>
+    <div class="list_div">
+      <ul>
+        <li v-for="(item, index) in managed_clubs"><a v-bind:href="'club_home.html?club_id='+item.club_id">{{ item.club_name }}</a></li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<div id="create_club" class="container">
+  <h1>Create Club</h1>
+  <form @submit="handle_submit" method="POST" action="/create_new_club" enctype="multipart/form-data">
+    <h3>Club Name:</h3>
+    <input type="text" name="title">
+    <br>
+    <br>
+    <h3>Club Description:</h3>
+    <textarea v-model="club_description" name="description" rows="15" cols="50"></textarea>
+    <br>
+    <br>
+    <h3>Club Banner</h3>
+    <br>
+    <input type="file" name="image">
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- <div>
+    <h3>Club Name:</h3>
+    <input type="text" v-model="club_name" name="title">
+    <br>
+    <br>
+    <h3>Club Description:</h3>
+    <textarea v-model="club_description" name="description" rows="15" cols="50"></textarea>
+    <br>
+    <br>
+    <input type="file" v-on:change="handleFileChange" name="image">
+    <br>
+    <br>
+    <button type="submit" v-on:click="create_club">Submit</button>
+  </div> -->
+
+  <!-- <h1>Create Club</h1>
+  <div class="container_input">
+    <h3>Club Name:</h3>
+    <input v-model="club_name" type="text">
+    <br>
+    <br>
+    <h3>Club Description:</h3>
+    <textarea v-model="club_description"></textarea>
+  </div>
+  <br>
+  <br>
+  <div class="container_button">
+    <button v-on:click="create_club" type="button">Create</button>
+  </div> -->
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="javascripts/sidebar.js"></script>
+<script src="javascripts/header.js"></script>
+<script src="javascripts/create_club.js"></script>
+
+</body>
+</html>

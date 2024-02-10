@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>home_page</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <!-- header -->
+    <div id="header" class="header">
+        <div class="home_button"><a href="/">HotSpots</a></div>
+        <div v-if="user==false" onclick="location.href='login.html'" class="login_button"><a>Login</a></div>
+        <div v-else v-on:click="logout_function" class="login_button"><a>Logout</a></div>
+
+        <div class="search_field">
+            <div>
+            <input v-model="input" type="text" placeholder="search for your clubs...">
+            <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+        </div>
+        </div>
+    </div>
+
+    <!-- image banner -->
+    <div id="banner">
+        <div class="hero-image"></div>
+
+        <div class="hero-text">
+            <h1>A better way to connect</h1>
+            <p>Plan, create, and manage your next club event with HotSpots</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id="dashboard_button" v-if="user==true" onclick="location.href='dashboard.html'" type="button">Go to Dashboard</div>
+        </div>
+
+
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<!-- <script src="javascripts/dashboard.js"></script> -->
+<!-- <script src="javascripts/sidebar.js"></script> -->
+<script src="javascripts/header.js"></script>
+<script src="javascripts/index.js"></script>
+</body>
+
+</html>

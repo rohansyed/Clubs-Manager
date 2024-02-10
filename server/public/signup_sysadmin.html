@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Administration Signup</title>
+    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="javascripts/signup_sysadmin.js" defer></script>
+</head>
+
+<body>
+    <!-- header -->
+    <div id="header" class="header">
+        <div class="home_button"><a href="/">HotSpots</a></div>
+        <div onclick="location.href='Logged_in_admin.html'" class="login_button"><a>Admin Dashboard</a></div>
+
+        <div class="search_field">
+            <div>
+                <input v-model="input" type="text" placeholder="search for your clubs...">
+                <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login_body">
+
+        <div class="login_box" id="app">
+
+            <div class="signup_left"> <!-- left side div (green) -->
+                <h1 class="login_left_content">Create New Administrator Account</h1><br><br><br>
+                <!-- login form -->
+                <form @submit.prevent class="login_right_content">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" v-model="userCredentials.username" class="input_size" required><br>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" v-model="userCredentials.password" class="input_size"
+                        required><br>
+                    <button type="submit" class="signup_button_left" @click="signupSysAdmin_function">Sign Up</button>
+                </form>
+            </div>
+
+            <div class="signup_right"> <!-- right side div (purple) -->
+                <div class="signup_left_content"> {{ message }}</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

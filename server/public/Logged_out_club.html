@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Individual event logged in</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="./javascripts/individual_event.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./stylesheets/event_home.css">
+        <link rel="stylesheet" href="./stylesheets/style.css">
+        <link rel="stylesheet" href="./stylesheets/dashboard.css">
+
+    </head>
+    <body>
+
+        <!-- header -->
+        <div id="header" class="header">
+            <div class="home_button"><a href="/">HotSpots</a></div>
+            <div v-if="user==false" onclick="location.href='login.html'" class="login_button"><a>Login</a></div>
+            <div v-else v-on:click="logout_function" class="login_button"><a>Logout</a></div>
+
+            <div class="search_field">
+                <div>
+                <input v-model="input" type="text" placeholder="search for your clubs...">
+                <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+            </div>
+            </div>
+        </div>
+        <div id = "sidebar" class="sidebar">
+            <div class="sidebar_comp">
+              <h1>My Clubs</h1>
+              <div v-if="user" class="sidebar_button"><button onclick = "location.href = 'search_club.html'" type="button">Join</button></div>
+              <div v-if="user" class="list_div">
+                <ul>
+                  <li v-for="(item, index) in joined_clubs"><a v-bind:href="'club_home.html?club_id='+item.club_id">{{ item.club_name }}</a></li>
+                </ul>
+              </div>
+              <div style="text-align: center;" v-else>Sign in to see</div>
+            </div>
+            <div class="sidebar_comp">
+              <h1>Clubs Managed</h1>
+              <div v-if="user" class="sidebar_button"><button onclick="location.href = 'create_club.html'" type="button">Create</button></div>
+              <div v-if="user" class="list_div">
+                <ul>
+                  <li v-for="(item, index) in managed_clubs"><a v-bind:href="'club_home.html?club_id='+item.club_id">{{ item.club_name }}</a></li>
+                </ul>
+              </div>
+              <div style="text-align: center;" v-else>Sign in to see</div>
+            </div>
+          </div>
+
+
+
+        <!-- main -->
+        <div class="main">
+            <div class="ClubHeader">
+                <div class="Date">
+                    Date of next club meet
+                </div>
+                <div class="Cost">
+                    Pricing
+                </div>
+                <div class="ClubPic">
+                    <img class="ActualClubPic" src="./images/pic.jpg" alt="picture of club">
+                </div>
+                <div class="Name">
+                    Name of club
+                </div>
+            </div>
+
+            <div class="tabs">
+                <div class="tabLink">
+                    <button type="button" class="tabHead" onclick="openTab('GenInfo')" onload="AutomaticTabOnLoad('GenInfo')">General Infomation</button>
+                    <button type="button" class="tabHead" onclick="openTab('ClubPost')">Club Post</button>
+                </div>
+
+                <div class="tabContent" id="GenInfo">
+                    <h2>General club infomation</h2>
+                    <p>Here you will find the club organiser, location, date, desciption of club and club tags</p>
+                </div>
+                <div class="tabContent" id="ClubPost">
+                    <h2>Club posts</h2>
+                    <p>Here you will find the club posts</p>
+                    <div class="BigCommentBox">
+                        <div class="PostOwner">Club Owner posted at ___</div>
+                        <div class="ClubRSVP">Event RSVP</div>
+                        <div class="PostBody">Body of Post</div>
+                        <div class="PostReply">Reply of Post</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="javascripts/sidebar.js"></script>
+        <script src="javascripts/header.js"></script>
+    </body>
+</html>

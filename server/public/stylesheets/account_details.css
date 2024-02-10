@@ -1,0 +1,90 @@
+.details_box {
+    background-color: #7F5AF0;
+    width: 66.66%;
+    float: left;
+    /* centres everything */
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    /* rounded corners as specified */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 5%;
+}
+
+.details_box_right {
+    background-color: #7F5AF0;
+    width: 33.33%;
+    float: left;
+    /* centres everything */
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    /* rounded corners as specified */
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.acc_det_left {
+    margin-bottom: 20px;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xxx-large;
+}
+
+.acc_det_right {
+    margin-bottom: 20px;
+    text-align: centre;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xx-large;
+    /* centres everything */
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: centre;
+    align-items: centre;
+
+}
+
+.input_size_ad {
+    width: 55%;
+    height: 60px;
+    font-size: x-large;
+}
+
+.signin_outline_ad {
+    border: 2px solid #2CB67D;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 2px;
+    width: 15%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: x-large;
+    background-color: #2CB67D;
+}
+
+.account_box {
+    width: 85%;
+    height: 1150px;
+    max-height: max-content;
+    box-sizing: border-box;
+    /* centers the box horizontally */
+    margin: 0 auto;
+    display: flex;
+}
+
+.account_right_content {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f2f2f2;
+    font-weight: bold;
+    font-size: xxx-large;
+}

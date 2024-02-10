@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/search_club.css">
+
+</head>
+<body>
+
+
+  <div id="header" class="header">
+    <div class="home_button"><a href="/">HotSpots</a></div>
+    <div v-if="user==false" onclick="location.href='login.html'" class="login_button"><a>Login</a></div>
+    <div v-else v-on:click="logout_function" class="login_button"><a>Logout</a></div>
+
+    <div class="search_field">
+        <div>
+        <input v-model="input" type="text" placeholder="search for your clubs...">
+        <div v-on:click="header_search" type="button"><span class="fa fa-search"></span></div>
+    </div>
+    </div>
+</div>
+<!--
+<div id = "sidebar" class="sidebar">
+    <div class="sidebar_comp">
+      <h1>My Clubs</h1>
+      <div class="sidebar_button"><button onclick = "location.href = 'search_club.html'" type="button">Join</button></div>
+      <div class="list_div">
+        <ul>
+          <li v-for="(item, index) in joined_clubs"><a v-bind:href="'event.html'">{{ item.club_name }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sidebar_comp">
+      <h1>Clubs Managed</h1>
+      <div class="sidebar_button"><button type="button">Create</button></div>
+      <div class="list_div">
+        <ul>
+          <li v-for="(item, index) in managed_clubs"><a v-bind:href="'event.html'">{{ item.club_name }}</a></li>
+        </ul>
+      </div>
+    </div>
+</div> -->
+
+<div id="search_clubs">
+  <div class="container">
+    <h1>Find Clubs</h1>
+    <input v-model="query" type="text" placeholder="search clubs...">
+    <button type="button" v-on:click="search_clubs">search</button>
+    <div>
+      <ul>
+        <li v-for="(item, index) in club_list"><a v-bind:href="'/club_home.html?club_id='+item.club_id">{{ item.club_name }}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="javascripts/search_club.js"></script>
+<script src="javascripts/sidebar.js"></script>
+<script src="javascripts/header.js"></script>
+</body>
+</html>

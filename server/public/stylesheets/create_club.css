@@ -1,0 +1,41 @@
+.container{
+    background-color: #72757E;
+    /* position: relative; */
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 5px;
+    height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.container h1{
+    color: white;
+    margin-bottom: 20px;
+}
+
+.container_input input{
+
+    font-size: 20px;
+}
+
+.container_input{
+    padding: 20px;
+    overflow: auto;
+    height: 70%;
+}
+
+.container_input textarea {
+    width: 90%;
+    height: 70%;
+}
+
+.container_button{
+    text-align: center;
+
+}
+
+.container_button button {
+    width: 70px;
+    height: 30px;
+}

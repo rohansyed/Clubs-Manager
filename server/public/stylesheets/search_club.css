@@ -1,0 +1,26 @@
+.container{
+    background-color: #72757E;
+    /* position: relative; */
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 5px;
+    height: calc(100vh - 200px);
+    padding: 20px;
+}
+
+.container h1{
+    color: white;
+    margin-bottom: 20px;
+}
+
+.container input{
+
+    font-size: 20px;
+}
+
+.container div{
+    padding: 20px;
+    overflow: auto;
+    height: 80%;
+}

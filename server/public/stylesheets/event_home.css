@@ -1,0 +1,310 @@
+/* headerBar start */
+/* .headerBar{
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #7F5AF0;
+    height: 50px;
+}
+.headerBar .LogoutButton{
+    float: right;
+    display: block;
+    background-color: #2CB67D;
+    color: #FFFFFF
+}
+
+.headerBar .SearchBar{
+    position: absolute;
+    display: block;
+    left: 50%;
+} */
+
+/* headerBar end */
+
+/* sidebar start */
+/* .sideBar{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 50px;
+    background-color: #72757E;
+    width: 180px;
+    color: #FFFFFF;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.sideBar .TopicHead{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #7F5AF0;
+}
+.sideBar .TopicBody{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.sideBar .Setting{
+    position: absolute;
+    bottom: 0;
+    font-size: 40px;
+}
+.sideBar .SettingsCorner{
+    position: absolute;
+    width: 180px;
+    font-size: 30px;
+    background-color: purple;
+    bottom: 40px;
+    left: 0px;
+}
+
+.sideBar .SettingButton #SettingIcon{
+    position: absolute;
+    display: block;
+    float: left;
+    color: white;
+}
+
+.sideBar .SettingButton #HomeIcon{
+    position: absolute;
+    display: block;
+    float: right;
+    right: 0%;
+    color: white;
+
+} */
+/* sidebar end */
+
+/* main start */
+.main{
+    position: absolute;
+    background-color: #D9D9D9;
+    left: 350px;
+    top: 50px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.main .club_header{
+    position: absolute;
+    display: block;
+    top: 0px;
+    height: 150px;
+    width: 100%;
+    background-color: #FFFFFF;
+}
+
+.main .club_header .date{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FFFFFF;
+}
+
+.main .club_header .cost{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #FFFFFF;
+}
+
+.main .club_header .club_pic{
+    position: auto;
+    top: 0;
+    margin-right: 25%;
+    background-color: #FFFFFF;
+    height: 75%;
+    width: 50%;
+}
+.main .club_header .club_pic .actual_club_pic{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.main .club_header .name{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #FFFFFF;
+}
+
+.main .club_header .leave_join_button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+}
+.main .tabs{
+    position: relative;
+    margin: auto;
+    top: 150px;
+    background-color: #FFFFFF;
+    width: 75%;
+}
+
+.main .tabs .tab_link{
+    background-color: #D9D9D9;
+}
+
+.main .tabs .tab_content{
+    background-color: white;
+    height: 100%;
+    padding: 20px;
+}
+
+.main .make_club_post_form_div{
+    background-color: #D9D9D9;
+}
+
+.main .tabs #club_post{
+    height: 500px;
+    overflow: scroll;
+}
+
+#members th{
+    width: 300px
+}
+
+.main .big_comment_box{
+    position:relative;
+    background-color: #D9D9D9;
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+}
+
+.main .big_comment_box .post_owner{
+    background-color: #FFFFFF;
+
+    border-style: solid;
+    border-bottom: 0;
+}
+
+/* .main .big_comment_box .club_RSVP{
+    position: absolute;
+    background-color: #FFFFFF;
+    top: 0;
+    right: 0;
+    border-style: solid;
+    border-width: medium;
+} */
+
+.main .big_comment_box .post_body{
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-top: 0;
+    height: 100px;
+    width: 100%;
+
+}
+
+/* .main .big_comment_box .post_reply{
+    position: absolute;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: medium;
+} */
+/* main end */
+
+
+
+
+/* system admin logged in start */
+.delete_box{
+    background-color: #FFFFFF;
+    width: 100%;
+    display: inline-block;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.delete_box .inside_delete_box{
+    background-color: #D9D9D9;
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+
+.delete_box .answers{
+    width: 40%;
+    height: 100%;
+    float: right;
+    text-align: center;
+}
+
+.delete_box .answers .deletion{
+    position: relative;
+    background-color: #D9D9D9;
+}
+
+.delete_box .answers #delete_yes{
+    position: relative;
+    background-color: red;
+}
+
+.delete_box .answers #delete_yes:hover {
+    background-color: hotpink;
+}
+
+.delete_box .answers #delete_no{
+    position: relative;
+    background-color:chartreuse;
+}
+
+.delete_box .answers #delete_no:hover {
+    background-color: lightblue;
+}
+
+/* for the popup in current events tab */
+
+.modal_popup_event_text_box{
+    display: block;
+    position: relative;
+    right: 25%;
+    width: 50%;
+    height: 500px;
+    /* background-color: #72757E; */
+    border-radius: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.modal_internal_text_box{
+    margin: auto;
+    padding: 10px;
+    border: 2px;
+    width: 80%;
+    background-color: lightgray;
+    border-radius: 20px;
+    z-index: 1;
+    overflow: auto;
+    height: 250px;
+}
+
+.modal_internal_text_box b {
+    font-size: large;
+}
+
+.modal_x_button{
+    float:right;
+    color:grey;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal_x_button:hover{
+    float:right;
+    color:red;
+}
+
+/* system admin logged in end */
+
